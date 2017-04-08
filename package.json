@@ -10,6 +10,8 @@
     "npm-run-all": "^4.0.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
     "cpx": "^1.5.0",
     "watchify": "^3.8.0"
   },
@@ -22,8 +24,8 @@
     "watch:copy-js": "cpx 'src/js/**/*.*' build/js --watch",
     "build:copy-assets": "cpx 'src/assets/**/*.*' build/assets",
     "watch:copy-assets": "cpx 'src/assets/**/*.*' build/assets --watch",
-    "build:browserify": "mkdir -p ./build/js && browserify src/js-browserify/download_urls.js -o build/js/bundle.js",
-    "watch:browserify": "mkdir -p ./build/js && watchify src/js-browserify/download_urls.js -o build/js/bundle.js",
+    "build:browserify": "mkdir -p ./build/js && browserify src/js-browserify/download_urls.js -o build/js/bundle.js -t [ babelify --presets [ es2015] ]",
+    "watch:browserify": "mkdir -p ./build/js && watchify src/js-browserify/download_urls.js -o build/js/bundle.js  -t [ babelify --presets [ es2015] ]",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
